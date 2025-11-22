@@ -23,26 +23,26 @@ public:Tower(string type, int x, int y, double cooldown, double range, int damag
 	  void setdamage(int a) {
 		  damage = a;
 	  }
-	  void getdamage() {
+	  int getdamage() {
 		  return damage;
 	  }
 	  void setrange(double a) {
 		  range = a;
 	  }
-	  void getrange() {
+	  double getrange() {
 		  return range;
 	  }
 	  void setfirerate(double a) {
 		  firerate = a;
 	  }
-	  void getfirerate() {
+	  double getfirerate() {
 		  return firerate;
 	  }
 	  void setposition(int a, b) {
 		  x = a;
 		  y = b;
 	  }
-	  void getposition() {
+	  int getposition() {
 		  return x, y;
 	  }
 	  //Éý¼¶Ëþ
