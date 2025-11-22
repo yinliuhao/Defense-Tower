@@ -1,4 +1,29 @@
 #include"tower.h"
+void Tower::setdamage(int a) {
+	damage = a;
+}
+int Tower::getdamage() {
+	return damage;
+}
+void Tower::setrange(double a) {
+	range = a;
+}
+double Tower::getrange() {
+	return range;
+}
+void Tower::setfirerate(double a) {
+	firerate = a;
+}
+double Tower::getfirerate() {
+	return firerate;
+}
+void Tower::setposition(int a, b) {
+	x = a;
+	y = b;
+}
+int Tower::getposition() {
+	return x, y;
+}
 void Tower::upgrade() {
 	level++；
 		if (level < 4) {
@@ -49,7 +74,7 @@ Tower::Enemy* findTarget(const std::vector<Enemy*>& enemies) {
 return target;
 	}
 	// 2. 攻击目标（需先调用findTarget确定目标）
-	void attack(Enemy* target) {
+	void Point::attack(Enemy* target) {
 		if (target == nullptr || cooldown > 0) return; // 无目标或冷却中，不攻击
 		// 对敌人造成伤害
 		target->takeDamage(damage);
