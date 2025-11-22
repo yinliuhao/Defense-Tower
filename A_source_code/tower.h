@@ -3,39 +3,40 @@
 #include<cmath>
 #include<string>
 #include<vector>
-class Enemy;
+enum TowerType {
+
+};
+class Monster;
+class Map;
 class Tower {
+	friend class Bullet;
 private:
-	//基础属性
-	string type;
-	int damage;
-	double range;
-	double firerate;
-	int x, y;
-	//炮塔位置
-	int level;
-	long cost;
-	//升级价格
-	string priority
-		double cooldown;
+	// 塔基础属性（与initTowerAttr函数中的属性对应）
+	TowerType towerType;       // 塔的种类
+	int health;                // 塔的血量
+	int buildCost;             // 安置塔所需金币
+	int damage;                // 塔的基础伤害
+	double attackRange;        // 塔的攻击范围（半径）
+	double attackSpeed;        // 塔的射速（攻击间隔，秒/次）
+	int x, y;                  // 塔在地图上的坐标
+	bool isPlaced;             // 塔是否已放置到地图
+	bool isActive;             // 塔是否激活（未摧毁）
+	Bullet* currentBullet;     // 当前塔使用的子弹（关联友元类）
 
-public:Tower(string type, int x, int y, double cooldown, double range, int damage, double fireRate, int level, long cost, string priority) :type(type), x(x), y(y), damage(damage), range(range), firerate(firerate), level(level), cost(cost), cooldown(0), targetPriority(priority) {}
-	  void setdamage(int a);
-	  int getdamage();
-	  void setrange(double a);
-	  double getrange();
-	  void setfirerate(double a);
-	  double getfirerate();
-	  void setposition(int a, b);
-	  int getposition();
-	  //升级塔
-	  void upgrade();
-	  //  更新冷却时间（每一帧调用?!，用于递减冷却）
-	  void updateCooldown(double deltaTime);
-		  //  寻找攻击目标
-		  Enemy* findTarget(const std::vector<Enemy*>& enemies);
-		  
-
-	bool canShoot();
-	// 判断能否攻击 
-	void shoot(vector<Monster>& monsters); // 发射炮弹 
+public:
+	//升级塔
+	void upgrade();
+	//  更新冷却时间（是否采用？）
+	void updateCooldown(double deltaTime);
+	//  寻找攻击目标
+	Monster* selectAttackTarget(const vector<Monster*>& enemies);
+	//设置塔种类
+	void setTowerType(TowerType type);
+	//初始化塔的基本属性
+	void initTowerAttr();
+	//放置塔
+	bool put(Map& map, int posX, int posY)
+		//铲除塔
+		bool remove(Map& map, int& currentGold)
+}
+ 
