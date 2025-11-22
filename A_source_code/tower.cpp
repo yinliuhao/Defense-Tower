@@ -1,5 +1,5 @@
 #include"tower.h"
-// 塔类型枚举（清晰区分不同塔，避免魔法数字）
+// 塔类型枚举（清晰区分不同塔，）
 enum TowerType {
 	//请输入文本*
 };
@@ -67,7 +67,7 @@ BaseEnemy* Tower::selectAttackTarget(const vector<BaseEnemy*>& enemies) {
     double minDistance = attackRange + 1;  // 初始距离设为超出攻击范围
 
     // 遍历所有敌人，筛选“在攻击范围内+距离最近”的目标（默认优先级）
-    for (BaseEnemy* enemy : enemies) {
+    for (Monster* enemy : enemies) {
         // 跳过已死亡的敌人
         if (!enemy->isAlive()) {
             continue;
@@ -87,7 +87,7 @@ BaseEnemy* Tower::selectAttackTarget(const vector<BaseEnemy*>& enemies) {
 
     // 若找到目标，打印目标信息；否则返回nullptr
     if (target != nullptr) {
-        cout << "成功：选中攻击目标，敌人ID：" << target->getId() << "，距离：" << minDistance << endl;
+        cout << "：" << target->getId() << "，距离：" << minDistance << endl;
     }
     return target;
 }
@@ -96,28 +96,28 @@ BaseEnemy* Tower::selectAttackTarget(const vector<BaseEnemy*>& enemies) {
 void Tower::initTowerAttr() {
     // 根据塔类型，赋值对应的基础属性（数值可根据游戏平衡调整）
     switch (towerType) {
-    case TOWER_ARCHER:  // 弓箭塔：射速快、伤害中、范围中
+    case TOWER_:  // 弓箭塔：射速快、伤害中、范围中
         health = 200;
         buildCost = 100;
         damage = 25;
         attackRange = 18.0;
         attackSpeed = 1.5;  // 每1.5秒攻击一次
         break;
-    case TOWER_CANNON:  // 炮塔：伤害高、射速慢、范围中、有击退
+    case TOWER_:  // 炮塔：伤害高、射速慢、范围中、有击退
         health = 300;
         buildCost = 150;
         damage = 60;
         attackRange = 15.0;
         attackSpeed = 3.0;  // 每3秒攻击一次
         break;
-    case TOWER_MAGE:    // 法师塔：伤害中、射速中、范围小、带减速
+    case TOWER_:    // 法师塔：伤害中、射速中、范围小、带减速
         health = 150;
         buildCost = 120;
         damage = 35;
         attackRange = 12.0;
         attackSpeed = 2.0;  // 每2秒攻击一次
         break;
-    case TOWER_SUPPORT: // 辅助塔：无伤害、射速无、范围大、带增益
+    case TOWER_: // 辅助塔：无伤害、射速无、范围大、带增益
         health = 180;
         buildCost = 180;
         damage = 0;
@@ -136,7 +136,7 @@ void Tower::initTowerAttr() {
 }
 
 // 5. 铲除塔函数实现
-bool Tower::remove(GameMap& map, int& currentGold) {
+bool Tower::remove(Map& map, int& currentGold) {
     // 校验：塔是否已放置（未放置则无法铲除）
     if (!isPlaced) {
         cout << "错误：塔未放置在地图上，无法铲除！" << endl;

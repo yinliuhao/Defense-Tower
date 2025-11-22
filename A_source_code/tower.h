@@ -29,7 +29,7 @@ public:
 	//  更新冷却时间（是否采用？）
 	void updateCooldown(double deltaTime);
 	//  寻找攻击目标
-	Monster* selectAttackTarget(const vector<Monster*>& enemies);
+	Monster* selectAttackTarget(const vector<Monster*>& enemy);
 	//设置塔种类
 	void setTowerType(TowerType type);
 	//初始化塔的基本属性
